@@ -17,7 +17,8 @@ public class ConfigSecurity {
 		http.csrf(t->t.disable());
 		http.cors(Customizer.withDefaults());
 		http.authorizeHttpRequests(authorized->authorized.anyRequest().authenticated());
-		http.oauth2ResourceServer(t->t.jwt(Customizer.withDefaults()));
+		//http.oauth2ResourceServer(t->t.jwt(Customizer.withDefaults()));
+		http.oauth2ResourceServer(t->t.opaqueToken(Customizer.withDefaults()));
 		http.sessionManagement(t->t.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		return http.build();
 		
